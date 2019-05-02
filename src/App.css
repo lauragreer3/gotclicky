@@ -32,6 +32,16 @@
   }
 }
 
+.click-item {
+  background-size: cover;
+  background-position: 50%;
+  height: 246px;
+  width: 220px;
+  margin: 10px 30px;
+  border: 2px solid #eeeeee;
+  border-radius: 2px;
+}
+
 /* bootstrap cover example css */
 
 /*
