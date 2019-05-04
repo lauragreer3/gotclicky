@@ -42,6 +42,59 @@
   border-radius: 2px;
 }
 
+
+/* Marvel Pictures */
+.blackpanther {
+  background-image: url(./game_images/bp.png);
+}
+
+.shuri {
+  background-image: url(./game_images/bpsis.png);
+}
+
+captain-america {
+  background-image: url(./game_images/captain-america.png);
+}
+
+.gamora {
+  background-image: url(./game_images/gamora.png);
+}
+
+.hulk {
+  background-image: url(./game_images/hulk.png);
+}
+
+.ironman {
+  background-image: url(./game_images/ironman.png);
+}
+
+.ironmonger {
+  background-image: url(./game_images/ironmonger.png);
+}
+
+.loki {
+  background-image: url(./game_images/loki.png);
+}
+
+.mandarin {
+  background-image: url(./game_images/mandarin.png);
+}
+
+.blackwidow {
+  background-image: url(./game_images/scarjo.png);
+}
+
+.thanos {
+  background-image: url(./game_images/thanos.png);
+}
+
+.thor {
+  background-image: url(./game_images/thor.png);
+}
+
+
+
+
 /* bootstrap cover example css */
 
 /*

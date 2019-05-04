@@ -21,10 +21,7 @@ function App() {
         <h1 className="cover-heading">Marvel Clicky Game</h1>
         <p className="lead">Click a picture below to begin. Keep clicking characters without clicking same picture twice to build your score.</p>
 
-        <div id="game_pictures" className="container">
-          <div role="img" aria-label="click item" className="click-item shake" style={{ backgroundImage:"url(/game_images/loki.png)"}}></div>
-          
-        </div>
+        
 
 
       </main>
