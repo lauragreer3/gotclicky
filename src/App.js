@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './clickyBoard.js';
+import Gameboard from './clickyBoard';
 
 function App() {
   return (
@@ -11,17 +13,15 @@ function App() {
           <nav className="nav nav-masthead justify-content-center">
             <a className="nav-link active" href="#">Home</a>
             <a className="nav-link" href="#">Reset</a>
-            <div className="scoreLabel nav-link">
-              Score: <span className="score" id="score">0</span>
-            </div>
+            
           </nav>
         </div>
       </header>
       <main className="inner cover" role="main">
         <h1 className="cover-heading">Marvel Clicky Game</h1>
         <p className="lead">Click a picture below to begin. Keep clicking characters without clicking same picture twice to build your score.</p>
-
         
+        <Gameboard />
 
 
       </main>
