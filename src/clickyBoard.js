@@ -23,6 +23,14 @@ function Scoreboard(props) {
     );
 }
 
+function Gamestate(props) {
+    return (
+        <div className="gamestateLabel">
+            {props.game_state}
+        </div>
+    );
+}
+
 class Gameboard extends Component {
 
     constructor(props) {
@@ -44,7 +52,7 @@ class Gameboard extends Component {
             ],
             character_selected: [],
             character_order:[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-            game_state: 'readyplayerone',
+            game_state: 'Click an MCU Character',
             score: 0
         };
         this.handleCharacterClick = this.handleCharacterClick.bind(this);
@@ -59,7 +67,7 @@ class Gameboard extends Component {
         if(oldSelected.includes(character_id)) {
             //already selected, handle gameover
             this.setState({
-                game_state: 'gameover', 
+                game_state: 'Game Over', 
                 score: 0,
                 character_order: shuffleArray(oldOrder),
                 character_selected: []
@@ -71,12 +79,26 @@ class Gameboard extends Component {
             // this.state.character_selected.push(character_id);
             console.log(this.state.character_selected);
             oldSelected.push(character_id);
-            //increment the score
-            this.setState({
-                score: oldScore + 1,
-                character_order: shuffleArray(oldOrder),
-                character_selected: oldSelected
-            });
+            //check for win
+            if(oldScore + 1 === 12)
+            {
+                this.setState({
+                    score: 0,
+                    character_order: shuffleArray(oldOrder),
+                    character_selected: [],
+                    game_state: 'Winner Winner, chicken dinner!'
+                })
+            }
+            else
+            {
+                this.setState({
+                    score: oldScore + 1,
+                    character_order: shuffleArray(oldOrder),
+                    character_selected: oldSelected,
+                    game_state: 'Select a character that has not been selected yet '
+                });
+            }
+            
         }
     }
 
@@ -85,6 +107,7 @@ class Gameboard extends Component {
         return (
             <div id="gameboard">
                 <Scoreboard score={parseInt(this.state.score)}/>
+                <Gamestate game_state={this.state.game_state} />
                 <div id="game_pictures" className="container">
                     {this.state.character_order.map((id) => 
                         <CharacterButton
