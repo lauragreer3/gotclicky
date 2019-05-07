@@ -9,7 +9,7 @@ function shuffleArray(array) {
 }
 
 function CharacterButton(props) {
-    const characterClasses = [props.name, 'click-item'];
+    const characterClasses = [props.name, 'click-item', 'col-md-3', 'col-lg-2'];
     return (
         <div role="img" key={props.id} onClick={(e) => props.clickHandler(this, props.id)} aria-label="click item" className={characterClasses.join(' ')} />
     );
@@ -108,7 +108,8 @@ class Gameboard extends Component {
             <div id="gameboard">
                 <Scoreboard score={parseInt(this.state.score)}/>
                 <Gamestate game_state={this.state.game_state} />
-                <div id="game_pictures" className="container">
+                <div id="game_pictures" className="container-fluid">
+                    <div className="row">
                     {this.state.character_order.map((id) => 
                         <CharacterButton
                             key={id} 
@@ -117,8 +118,9 @@ class Gameboard extends Component {
                             clickHandler={this.handleCharacterClick}
                         />        
                     )}
-                </div>    
-            </div>
+                </div>  
+            </div>  
+        </div>
         );
     }
 }

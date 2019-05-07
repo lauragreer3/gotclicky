@@ -32,6 +32,13 @@
   }
 }
 
+div#gameboard, div#game_pictures {
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin-left: 50px;
+}
+
 .click-item {
   background-size: cover;
   background-position: 50%;
