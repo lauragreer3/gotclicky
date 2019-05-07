@@ -52,42 +52,33 @@ class Gameboard extends Component {
 
     handleCharacterClick(e, character_id) {
         console.log('character click' + character_id);
-        var oldScore = this.state.score;
+        console.log('score: ' + this.state.score);
+        var oldScore = parseInt(this.state.score);
         var oldOrder = this.state.character_order;
-        //check if the character has been clicked before
-        if(this.state.character_selected.length == 0)
-        {
-            this.state.character_selected.push(character_id);
+        var oldSelected = this.state.character_selected;
+        if(oldSelected.includes(character_id)) {
+            //already selected, handle gameover
             this.setState({
-                score: oldScore++,
-                character_order: shuffleArray(oldOrder)
-            })
+                game_state: 'gameover', 
+                score: 0,
+                character_order: shuffleArray(oldOrder),
+                character_selected: []
+            });
+            console.log('game over');
         }
-        this.state.character_selected.forEach(element => {
-            if(element === character_id) {
-                //already selected, handle gameover
-                this.setState({game_state: 'gameover'});
-                //set all character buttons to disabled
-                //show game over message
-            }
-            else
-            {
-                this.state.character_selected.push(character_id);
-                console.log(this.state.character_selected);
-                //increment the score
-                this.setState({
-                    score: oldScore++,
-                    character_order: shuffleArray(oldOrder)
-                })
-            }
-        });
-        //handle game over
-
-        //handle shuffling the order
-
-
+        else
+        {
+            // this.state.character_selected.push(character_id);
+            console.log(this.state.character_selected);
+            oldSelected.push(character_id);
+            //increment the score
+            this.setState({
+                score: oldScore + 1,
+                character_order: shuffleArray(oldOrder),
+                character_selected: oldSelected
+            });
+        }
     }
-
 
 
     render() {
@@ -107,7 +98,8 @@ class Gameboard extends Component {
             </div>
         );
     }
-}        
+}
+        
 
 export default Gameboard;
 
