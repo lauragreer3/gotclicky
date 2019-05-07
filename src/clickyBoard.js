@@ -5,29 +5,29 @@ function shuffleArray(array) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
+    return array;
 }
 
 function CharacterButton(props) {
-    const character = props.name;
     const characterClasses = [props.name, 'click-item'];
     return (
-        <div role="img" key={props.id} onClick={this.handleCharacterClick.bind(this, props.id)} ariaLabel="click item" className={characterClasses.join(', ') }/>
-    )
+        <div role="img" key={props.id} onClick={(e) => props.clickHandler(this, props.id)} aria-label="click item" className={characterClasses.join(' ')} />
+    );
 }
 
 function Scoreboard(props) {
     return (
         <div className="scoreLabel nav-link">
-            Score: <span className="score" id="score">props.score</span>
+            Score: <span className="score" id="score">{props.score}</span>
         </div>
-    )
+    );
 }
 
 class Gameboard extends Component {
 
     constructor(props) {
         super(props);
-        this.setState= ({
+        this.state= {
             game_characters: [
                 { id:1, name: 'blackpanther' },
                 { id:2, name: 'shuri' },
@@ -45,14 +45,24 @@ class Gameboard extends Component {
             character_selected: [],
             character_order:[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
             game_state: 'readyplayerone',
-            score: 0,
-        });
+            score: 0
+        };
         this.handleCharacterClick = this.handleCharacterClick.bind(this);
     }
 
     handleCharacterClick(e, character_id) {
-        console.log('character click');
+        console.log('character click' + character_id);
+        var oldScore = this.state.score;
+        var oldOrder = this.state.character_order;
         //check if the character has been clicked before
+        if(this.state.character_selected.length == 0)
+        {
+            this.state.character_selected.push(character_id);
+            this.setState({
+                score: oldScore++,
+                character_order: shuffleArray(oldOrder)
+            })
+        }
         this.state.character_selected.forEach(element => {
             if(element === character_id) {
                 //already selected, handle gameover
@@ -62,11 +72,13 @@ class Gameboard extends Component {
             }
             else
             {
-                this.character_selected.push(character_id);
+                this.state.character_selected.push(character_id);
+                console.log(this.state.character_selected);
                 //increment the score
-                this.setState({score: this.state.score++})
-                //shuffle the display order
-                shuffleArray(this.state.character_order);
+                this.setState({
+                    score: oldScore++,
+                    character_order: shuffleArray(oldOrder)
+                })
             }
         });
         //handle game over
@@ -81,14 +93,15 @@ class Gameboard extends Component {
     render() {
         return (
             <div id="gameboard">
-                <Scoreboard score={parseInt(score)}/>
+                <Scoreboard score={parseInt(this.state.score)}/>
                 <div id="game_pictures" className="container">
-                    {this.state.character_order.map}
-                    {character_order.map((id) => 
-                        <CharacterButton 
-                            name={this.state.characterClasses[id-1].name}
-                            id={this.state.characterClasses[id-1].id}
-                    />        
+                    {this.state.character_order.map((id) => 
+                        <CharacterButton
+                            key={id} 
+                            name={this.state.game_characters[id-1].name}
+                            id={this.state.game_characters[id-1].id}
+                            clickHandler={this.handleCharacterClick}
+                        />        
                     )}
                 </div>    
             </div>
