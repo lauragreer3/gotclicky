@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/gotclicky/static/css/main.d8395641.chunk.css",
+    "main.js": "/gotclicky/static/js/main.37dbf875.chunk.js",
+    "main.js.map": "/gotclicky/static/js/main.37dbf875.chunk.js.map",
+    "runtime~main.js": "/gotclicky/static/js/runtime~main.8643016e.js",
+    "runtime~main.js.map": "/gotclicky/static/js/runtime~main.8643016e.js.map",
+    "static/js/2.4e81ba5b.chunk.js": "/gotclicky/static/js/2.4e81ba5b.chunk.js",
+    "static/js/2.4e81ba5b.chunk.js.map": "/gotclicky/static/js/2.4e81ba5b.chunk.js.map",
+    "index.html": "/gotclicky/index.html",
+    "precache-manifest.ad98f5ee5916861336859f81875eab90.js": "/gotclicky/precache-manifest.ad98f5ee5916861336859f81875eab90.js",
+    "service-worker.js": "/gotclicky/service-worker.js",
+    "static/css/main.d8395641.chunk.css.map": "/gotclicky/static/css/main.d8395641.chunk.css.map",
+    "static/media/App.css": "/gotclicky/static/media/thor.1cd4b261.png",
+    "static/media/logo.svg": "/gotclicky/static/media/logo.5d5d9eef.svg"
+  }
+}
